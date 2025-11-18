@@ -1,174 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webzio - Web Design & Hosting</title>
-    <!-- Inter Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Added background image with a subtle dark pattern */
-            background-image: url('img1.avif');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            /* Added an overlay to ensure text readability */
-            background-color: rgba(15, 23, 42, 0.9);
-            background-blend-mode: multiply;
-        }
-        /* Custom scrollbar for a sleek look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #06b6d4;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0891b2;
-        }
-    </style>
-</head>
-<body class="bg-slate-500 text-slate-100 antialiased">
 
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8 max-w-7xl">
 
-        <!-- Header & Navigation -->
-        <header class="flex flex-col md:flex-row justify-between items-center py-6 px-4 mb-12 rounded-xl bg-slate-800 shadow-lg bg-opacity-80 backdrop-blur-sm">
-            <div class="text-3xl font-bold text-emerald-400 tracking-wider mb-4 md:mb-0">
-                Webzio
-            </div>
-            <nav>
-                <ul class="flex space-x-6 text-lg font-medium">
-                    <li><a href="#home" class="hover:text-emerald-400 transition-colors">Home</a></li>
-                    <li><a href="#services" class="hover:text-emerald-400 transition-colors">Services</a></li>
-                    <li><a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+# Webzio - Web Design & Hosting Services
 
-        <main>
-            <!-- Hero Section -->
-            <section id="home" class="text-center py-20 px-6 bg-slate-800 rounded-3xl shadow-xl mb-12 bg-opacity-80 backdrop-blur-sm">
-                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-6 animate-fade-in-up">
-                    Transforming Your Ideas into Stunning Websites
-                </h1>
-                <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-8">
-                    We specialize in creating beautiful, fast, and responsive websites that captivate your audience and grow your business.
-                </p>
-                <a href="#contact" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
-                    Get a Quote Today
-                </a>
-            </section>
+Professional web solutions for businesses and individuals. We provide comprehensive web design, hosting, and digital services to help you establish and grow your online presence.
 
-            <!-- Services Section -->
-            <section id="services" class="py-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-center text-slate-100 mb-12">Our Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Web Designing Card -->
-                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-2 border-slate-700 hover:border-emerald-400 transition-colors duration-300 bg-opacity-80 backdrop-blur-sm">
-                        <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for design icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5ZM2.25 10.5h19.5M4.5 7.5c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5h15c2.485 0 4.5-2.015 4.5-4.5s-2.015-4.5-4.5-4.5H4.5Z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-3">Web Designing</h3>
-                        <p class="text-slate-400">
-                            We create custom, visually appealing, and user-friendly websites tailored to your brand identity.
-                        </p>
-                    </div>
+## About
 
-                    <!-- Web Hosting Card -->
-                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-2 border-slate-700 hover:border-emerald-400 transition-colors duration-300 bg-opacity-80 backdrop-blur-sm">
-                        <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for hosting icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3h16.5m-16.5 3h16.5M3 6h18c.552 0 1 .448 1 1v10c0 .552-.448 1-1 1H3c-.552 0-1-.448-1-1V7c0-.552.448-1 1-1Z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-3">Web Hosting</h3>
-                        <p class="text-slate-400">
-                            Get reliable and secure web hosting to ensure your website is always fast, stable, and online.
-                        </p>
-                    </div>
+Webzio is a full-service web solutions provider specializing in creating stunning websites and reliable hosting services. We combine creativity with technical expertise to deliver exceptional digital experiences.
 
-                    <!-- After-Services Card -->
-                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-2 border-slate-700 hover:border-emerald-400 transition-colors duration-300 bg-opacity-80 backdrop-blur-sm">
-                        <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for updates icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.349h4.992m0 0a3 3 0 110-6m0 6l-3-3m3 3L8.583 17.5M16.023 9.348l4.992-4.992m0 0a3 3 0 11-4.992-4.992m4.992 4.992L16.023 9.348m-1.5 8.652-2.25-2.25m0 0L19.5 7.5" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-3">After-Services & Updates</h3>
-                        <p class="text-slate-400">
-                            We provide dedicated support and regular updates to keep your website fresh, secure, and performing optimally.
-                        </p>
-                    </div>
-                </div>
-            </section>
+## Services Offered
 
-            <!-- Contact Section -->
-            <section id="contact" class="py-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-center text-slate-100 mb-12">Contact Us</h2>
-                <div class="bg-slate-800 p-8 md:p-12 rounded-xl shadow-lg max-w-3xl mx-auto bg-opacity-80 backdrop-blur-sm">
-                    <p class="text-lg text-center text-slate-300 mb-8">
-                        Ready to start your project? We'd love to hear from you.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Contact Details -->
-                        <div>
-                            <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Get in Touch</h3>
-                            <div class="space-y-4 text-lg">
-                                <p><strong>Name:</strong> Jaffer Sadiq</p>
-                                <p><strong>Address:</strong> 2/12 A, Gandhi Nagar, Kuniamuthur, Coimbatore - 641008</p>
-                                <p><strong>Phone:</strong> <a href="tel:9994736006" class="text-emerald-400 hover:underline">9994736006</a></p>
-                                <p><strong>Email:</strong> <a href="mailto:jafferba2002@gmail.com" class="text-emerald-400 hover:underline">jafferba2002@gmail.com</a></p>
-                            </div>
-                        </div>
+- **Web Design**: Custom website design tailored to your brand and business needs
+- **Web Hosting**: Reliable and secure hosting solutions with 99.9% uptime
+- **Domain Registration**: Help with domain selection and registration
+- **SSL Certificates**: Secure your website with SSL implementation
+- **Website Maintenance**: Ongoing support and updates for your website
+- **E-commerce Solutions**: Online store development and management
+- **SEO Optimization**: Improve your website's search engine visibility
+- **Content Management Systems**: Easy-to-use CMS integration
 
-                        <!-- Contact Form (Example) -->
-                        <div>
-                            <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Send a Message</h3>
-                            <form class="space-y-4">
-                                <div>
-                                    <label for="name" class="block text-slate-300 mb-1">Your Name</label>
-                                    <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-slate-300 mb-1">Your Email</label>
-                                    <input type="email" id="email" name="email" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-slate-300 mb-1">Your Message</label>
-                                    <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors"></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-md shadow-lg transform transition-transform duration-300 hover:scale-105">
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+## Technologies Used
 
-        <!-- Footer -->
-        <footer class="text-center py-6 mt-12 border-t border-slate-700 text-slate-400">
-            &copy; 2024 Webzio. All rights reserved.
-        </footer>
-    </div>
+- HTML5, CSS3, JavaScript
+- MongoDB for database solutions
+- SSL/TLS security protocols
+- Responsive design frameworks
+- Modern hosting infrastructure
 
-</body>
-</html>
+## Features
+
+- Mobile-responsive designs
+- Fast loading speeds
+- SEO-friendly architecture
+- Secure hosting environment
+- 24/7 customer support
+- Affordable pricing plans
+- Custom solutions for every budget
+
+## Contact
+
+- **Location**: Coimbatore, Tamil Nadu, India
+- **Website**: [Your Website URL]
+- **Email**: [Your Email]
+- **Phone**: [Your Phone Number]
+
+## Why Choose Webzio?
+
+✓ Years of experience in web development  
+✓ Customer-focused approach  
+✓ Competitive pricing  
+✓ Quick turnaround time  
+✓ Post-launch support  
+
+## License
+
+© 2025 Webzio. All rights reserved.
+
+-
