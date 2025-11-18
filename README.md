@@ -1,6 +1,4 @@
-I'll create a professional README for your web design and hosting services website. This will help showcase your Webzio business effectively on GitHub.
 
----
 
 # Webzio - Web Design & Hosting Services
 
