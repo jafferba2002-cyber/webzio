@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5SPD23JCC1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SPD23JCC1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-5SPD23JCC1');
-</script>
+        gtag('config', 'G-5SPD23JCC1');
+    </script>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TGKKNCJR');</script>
-<!-- End Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TGKKNCJR');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webzio - Web Design & Hosting</title>
@@ -25,86 +29,101 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-       body {
-    font-family: 'Inter', sans-serif;
-    /* Remove background properties from here */
-    margin: 0; /* Ensures no default spacing */
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Remove background properties from here */
+            margin: 0;
+            /* Ensures no default spacing */
+        }
 
-/* Style the video to act as a background */
-#background-video {
-    position: fixed; /* Fixes the video relative to the viewport */
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover; /* Ensures video covers the screen without distortion */
-    z-index: -2; /* Places the video behind everything else */
-}
+        /* Style the video to act as a background */
+        #background-video {
+            position: fixed;
+            /* Fixes the video relative to the viewport */
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            /* Ensures video covers the screen without distortion */
+            z-index: -2;
+            /* Places the video behind everything else */
+        }
 
-/* Create the dark overlay */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(15, 23, 42, 0.6); /* Your dark color overlay */
-    background-blend-mode: multiply;
-    z-index: -1; /* Places the overlay on top of the video but behind your content */
-}
+        /* Create the dark overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            /* Your dark color overlay */
+            background-blend-mode: multiply;
+            z-index: -1;
+            /* Places the overlay on top of the video but behind your content */
+        }
 
-/* Add styles to your content container to ensure it's visible */
-.content {
-    position: relative;
-    z-index: 1;
-    color: rgb(255, 255, 255); /* Example text color */
-    text-align: center;
-    padding-top: 20vh;
-}
+        /* Add styles to your content container to ensure it's visible */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: rgb(255, 255, 255);
+            /* Example text color */
+            text-align: center;
+            padding-top: 20vh;
+        }
     </style>
 </head>
+
 <body <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGKKNCJR"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-class="bg-slate-500 text-slate-100 antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGKKNCJR" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    class="bg-slate-500 text-slate-100 antialiased">
 
     <!-- Main Container -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
-        <body>
-    <video autoplay muted loop id="background-video">
-        <source src="webziobacround.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
 
-    </body>
+        <body>
+            <video autoplay muted loop id="background-video">
+                <source src="webziobacround.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+
+        </body>
 
         <!-- Header & Navigation -->
-        <header class="flex flex-col md:flex-row justify-between items-center py-6 px-4 mb-12 rounded-xl bg-slate-300 shadow-lg bg-opacity-40 backdrop-blur-sm">
+        <header
+            class="flex flex-col md:flex-row justify-between items-center py-6 px-4 mb-12 rounded-xl bg-slate-300 shadow-lg bg-opacity-40 backdrop-blur-sm">
             <div class="text-3xl font-bold text-emerald-400 tracking-wider mb-4 md:mb-0">
-               <img src="webzio logo.png" alt="Webzio Logo" class="w-150 h-12 inline-block mr-2">
+                <img src="webzio logo.png" alt="Webzio Logo" class="w-150 h-12 inline-block mr-2">
             </div>
             <nav>
                 <ul class="flex space-x-6 text-lg font-medium ">
-                    <li><a href="#home" class="hover:text-emerald-400 transition-colors">Home</a></li>
-                    <li><a href="#services" class="hover:text-emerald-400 transition-colors">Services</a></li>
-                    <li><a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a></li>
+                    <li><a href="#home" class="text-white hover:text-emerald-400 transition-colors">Home</a></li>
+                    <li><a href="#services" class="text-white hover:text-emerald-400 transition-colors">Services</a>
+                    </li>
+                    <li><a href="#contact" class="text-white hover:text-emerald-400 transition-colors">Contact</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
             <!-- Hero Section -->
-            <section id="home" class="text-center py-20 px-6 bg-slate-300 rounded-3xl shadow-xl mb-12 bg-opacity-40 backdrop-blur-sm">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-6 animate-fade-in-up">
+            <section id="home"
+                class="text-center py-20 px-6 bg-slate-300 rounded-3xl shadow-xl mb-12 bg-opacity-40 backdrop-blur-sm">
+                <h1
+                    class="text-4xl md:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-6 animate-fade-in-up">
                     Transforming Your Ideas into Stunning Websites
                 </h1>
                 <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-8">
-                    We specialize in creating beautiful, fast, and responsive websites that captivate your audience and grow your business.
+                    We specialize in creating beautiful, fast, and responsive websites that captivate your audience and
+                    grow your business.
                 </p>
-                <a href="#contact" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
+                <a href="#contact"
+                    class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
                     Get a Quote Today
                 </a>
             </section>
@@ -113,46 +132,58 @@ class="bg-slate-500 text-slate-100 antialiased">
             <section id="services" class="py-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-center text-slate-100 mb-12">Our Services</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
+
                     <!-- Web Designing Card -->
-                    <div class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
+                    <div
+                        class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
                             <!-- SVG for design icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5ZM2.25 10.5h19.5M4.5 7.5c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5h15c2.485 0 4.5-2.015 4.5-4.5s-2.015-4.5-4.5-4.5H4.5Z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-12 h-12">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 18.75c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5ZM2.25 10.5h19.5M4.5 7.5c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5h15c2.485 0 4.5-2.015 4.5-4.5s-2.015-4.5-4.5-4.5H4.5Z" />
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3">Web Designing</h3>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Web Designing</h3>
                         <p class="text-slate-300">
-                            We create custom, visually appealing, and user-friendly websites tailored to your brand identity.
+                            We create custom, visually appealing, and user-friendly websites tailored to your brand
+                            identity.
                         </p>
                     </div>
 
                     <!-- Web Hosting Card -->
-                    <div class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
+                    <div
+                        class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
                             <!-- SVG for hosting icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3h16.5m-16.5 3h16.5M3 6h18c.552 0 1 .448 1 1v10c0 .552-.448 1-1 1H3c-.552 0-1-.448-1-1V7c0-.552.448-1 1-1Z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-12 h-12">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 12h16.5m-16.5 3h16.5m-16.5 3h16.5M3 6h18c.552 0 1 .448 1 1v10c0 .552-.448 1-1 1H3c-.552 0-1-.448-1-1V7c0-.552.448-1 1-1Z" />
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3">Web Hosting</h3>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Web Hosting</h3>
                         <p class="text-slate-300">
-                            Get reliable and secure web hosting to ensure your website is always fast, stable, and online.
+                            Get reliable and secure web hosting to ensure your website is always fast, stable, and
+                            online.
                         </p>
                     </div>
 
                     <!-- After-Services Card -->
-                    <div class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
+                    <div
+                        class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 transition-colors duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
                             <!-- SVG for updates icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.349h4.992m0 0a3 3 0 110-6m0 6l-3-3m3 3L8.583 17.5M16.023 9.348l4.992-4.992m0 0a3 3 0 11-4.992-4.992m4.992 4.992L16.023 9.348m-1.5 8.652-2.25-2.25m0 0L19.5 7.5" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-12 h-12">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M16.023 9.348h4.992v-.001M2.985 19.349h4.992m0 0a3 3 0 110-6m0 6l-3-3m3 3L8.583 17.5M16.023 9.348l4.992-4.992m0 0a3 3 0 11-4.992-4.992m4.992 4.992L16.023 9.348m-1.5 8.652-2.25-2.25m0 0L19.5 7.5" />
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3">After-Services & Updates</h3>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">After-Services & Updates</h3>
                         <p class="text-slate-300">
-                            We provide dedicated support and regular updates to keep your website fresh, secure, and performing optimally.
+                            We provide dedicated support and regular updates to keep your website fresh, secure, and
+                            performing optimally.
                         </p>
                     </div>
                 </div>
@@ -161,20 +192,23 @@ class="bg-slate-500 text-slate-100 antialiased">
             <!-- Contact Section -->
             <section id="contact" class="py-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-center text-slate-100 mb-12">Contact Us</h2>
-                <div class="bg-slate-300 p-8 md:p-12 rounded-xl shadow-lg max-w-3xl mx-auto bg-opacity-50 backdrop-blur-sm">
+                <div
+                    class="bg-slate-300 p-8 md:p-12 rounded-xl shadow-lg max-w-3xl mx-auto bg-opacity-50 backdrop-blur-sm">
                     <p class="text-lg text-center text-slate-300 mb-8">
                         Ready to start your project? We'd love to hear from you.
                     </p>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Contact Details -->
                         <div>
                             <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Get in Touch</h3>
-                            <div class="space-y-4 text-lg">
+                            <div class="space-y-4 text-lg text-white">
                                 <p><strong>Name:</strong> Jaffer Sadiq</p>
                                 <p><strong>Address:</strong> 2/12 A, Gandhi Nagar, Kuniamuthur, Coimbatore - 641008</p>
-                                <p><strong>Phone:</strong> <a href="tel:9994736006" class="text-emerald-400 hover:underline">9994736006</a></p>
-                                <p><strong>Email:</strong> <a href="mailto:contact@webzio.xyz" class="text-emerald-400 hover:underline">contact@webzio.xyz</a></p>
+                                <p><strong>Phone:</strong> <a href="tel:9994736006"
+                                        class="text-emerald-400 hover:underline">9994736006</a></p>
+                                <p><strong>Email:</strong> <a href="mailto:contact@webzio.xyz"
+                                        class="text-emerald-400 hover:underline">contact@webzio.xyz</a></p>
                             </div>
                         </div>
 
@@ -186,47 +220,68 @@ class="bg-slate-500 text-slate-100 antialiased">
                                 The 'action' attribute is set to a Formspree endpoint. You'll need to replace
                                 the part after 'https://formspree.io/f/' with your unique form ID.
                             -->
-                             <form action="https://formspree.io/f/xovnqlpp" method="POST" class="space-y-4">
+                            <form action="https://formspree.io/f/xovnqlpp" method="POST" class="space-y-4">
                                 <div>
                                     <label for="name" class="block text-slate-300 mb-1">Your Name</label>
-                                    <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
+                                    <input type="text" id="name" name="name"
+                                        class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-slate-300 mb-1">Your Email</label>
-                                    <input type="email" id="email" name="email" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
+                                    <input type="email" id="email" name="email"
+                                        class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-slate-300 mb-1">Mobile Number</label>
-                                    <input type="tel" id="phone" name="phone" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
+                                    <input type="tel" id="phone" name="phone"
+                                        class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="message" class="block text-slate-300 mb-1">Your Message</label>
-                                    <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors"></textarea>
+                                    <textarea id="message" name="message" rows="4"
+                                        class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors"></textarea>
                                 </div>
-                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-md shadow-lg transform transition-transform duration-300 hover:scale-105">
+                                <button type="submit"
+                                    class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-md shadow-lg transform transition-transform duration-300 hover:scale-105">
                                     Send Message
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 text-center bg-slate-300 p-8 rounded-xl shadow-lg max-w-2xl mx-auto bg-opacity-40 backdrop-blur-sm">
+                <div
+                    class="mt-8 text-center bg-slate-300 p-8 rounded-xl shadow-lg max-w-2xl mx-auto bg-opacity-40 backdrop-blur-sm">
                     <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Chat on WhatsApp</h3>
                     <p class="text-lg text-slate-300 mb-6">
                         Prefer to chat directly? Click the button below to start a conversation with us on WhatsApp.
                     </p>
-                    <a href="https://wa.me/919994736006?text=Hello%20Webzio,%20I'd%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
+                    <a href="https://wa.me/919994736006?text=Hello%20Webzio,%20I'd%20like%20to%20know%20more%20about%20your%20services."
+                        target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
                         <!-- WhatsApp SVG Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a1.5 1.5 0 0 0-1.5-1.5H16a1.5 1.5 0 0 0-1.5 1.5v4.5a1.5 1.5 0 0 0 1.5 1.5h3.5A1.5 1.5 0 0 0 21 16z"></path><path d="M11 15a1.5 1.5 0 0 0-1.5-1.5H7a1.5 1.5 0 0 0-1.5 1.5v4.5a1.5 1.5 0 0 0 1.5 1.5h3.5a1.5 1.5 0 0 0 1.5-1.5z"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5V11a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5v4zM16 8h-4"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-message-circle">
+                            <path
+                                d="M21 11.5a1.5 1.5 0 0 0-1.5-1.5H16a1.5 1.5 0 0 0-1.5 1.5v4.5a1.5 1.5 0 0 0 1.5 1.5h3.5A1.5 1.5 0 0 0 21 16z">
+                            </path>
+                            <path
+                                d="M11 15a1.5 1.5 0 0 0-1.5-1.5H7a1.5 1.5 0 0 0-1.5 1.5v4.5a1.5 1.5 0 0 0 1.5 1.5h3.5a1.5 1.5 0 0 0 1.5-1.5z">
+                            </path>
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5V11a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5v4zM16 8h-4">
+                            </path>
+                        </svg>
                         <span>Chat on WhatsApp</span>
                     </a>
                 </div>
             </section>
-        </main>  <!-- Footer -->
+        </main> <!-- Footer -->
         <footer class="text-center py-6 mt-12 border-t border-slate-700 text-slate-400">
-            &copy;  Webzio. All rights reserved.<br>&#10084; designed by jaffer sadiq
+            &copy; Webzio. All rights reserved.<br>&#10084; designed by jaffer sadiq
         </footer>
     </div>
 
 </body>
+
 </html>
