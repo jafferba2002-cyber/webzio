@@ -28,6 +28,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -77,22 +86,19 @@
     </style>
 </head>
 
-<body <!-- Google Tag Manager (noscript) -->
+<body class="bg-slate-500 text-slate-100 antialiased">
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGKKNCJR" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    class="bg-slate-500 text-slate-100 antialiased">
 
     <!-- Main Container -->
     <div class="container mx-auto px-4 py-8 max-w-7xl">
 
-        <body>
-            <video autoplay muted loop id="background-video">
-                <source src="webziobacround.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-
-        </body>
+        <video autoplay muted loop id="background-video">
+            <source src="webziobacround.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
 
         <!-- Header & Navigation -->
         <header
