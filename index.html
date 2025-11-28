@@ -40,26 +40,19 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Remove background properties from here */
             margin: 0;
-            /* Ensures no default spacing */
         }
 
-        /* Style the video to act as a background */
         #background-video {
             position: fixed;
-            /* Fixes the video relative to the viewport */
             right: 0;
             bottom: 0;
             min-width: 100%;
             min-height: 100%;
             object-fit: cover;
-            /* Ensures video covers the screen without distortion */
             z-index: -2;
-            /* Places the video behind everything else */
         }
 
-        /* Create the dark overlay */
         body::after {
             content: '';
             position: fixed;
@@ -68,20 +61,357 @@
             width: 100%;
             height: 100%;
             background-color: rgba(15, 23, 42, 0.6);
-            /* Your dark color overlay */
             background-blend-mode: multiply;
             z-index: -1;
-            /* Places the overlay on top of the video but behind your content */
         }
 
-        /* Add styles to your content container to ensure it's visible */
         .content {
             position: relative;
             z-index: 1;
             color: rgb(255, 255, 255);
-            /* Example text color */
             text-align: center;
             padding-top: 20vh;
+        }
+
+        /* Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(52, 211, 153, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(52, 211, 153, 0.6);
+        }
+
+        #chat-button svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        #chat-button.active svg {
+            transform: rotate(90deg);
+        }
+
+        #chat-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        #chat-button:active::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        #chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: rgba(30, 41, 59, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(52, 211, 153, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        #chat-window.active {
+            display: flex;
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        #chat-header {
+            background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #chat-header-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chat-header-text {
+            flex: 1;
+        }
+
+        #chat-header-text h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        #chat-header-text p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        #home-button {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #home-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        #home-button svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        #chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat-messages::-webkit-scrollbar-track {
+            background: rgba(71, 85, 105, 0.3);
+            border-radius: 10px;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(52, 211, 153, 0.5);
+            border-radius: 10px;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(52, 211, 153, 0.7);
+        }
+
+        .message {
+            display: flex;
+            gap: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: rgba(71, 85, 105, 0.5);
+            color: #e2e8f0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: rgba(71, 85, 105, 0.5);
+            border-radius: 16px;
+            border-bottom-left-radius: 4px;
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        #chat-input-container {
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(52, 211, 153, 0.2);
+            display: flex;
+            gap: 8px;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(71, 85, 105, 0.3);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            border-radius: 24px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #chat-input:focus {
+            border-color: #34d399;
+            background: rgba(71, 85, 105, 0.5);
+        }
+
+        #chat-input::placeholder {
+            color: rgba(226, 232, 240, 0.5);
+        }
+
+        #send-button {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #send-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(52, 211, 153, 0.4);
+        }
+
+        #send-button:active {
+            transform: scale(0.95);
+        }
+
+        #send-button svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quick-reply-btn {
+            padding: 8px 14px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: #34d399;
+            border-radius: 16px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply-btn:hover {
+            background: rgba(52, 211, 153, 0.2);
+            border-color: #34d399;
+        }
+
+        @media (max-width: 640px) {
+            #chat-window {
+                width: calc(100vw - 40px);
+                height: calc(100vh - 100px);
+                bottom: 80px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -143,7 +473,6 @@
                     <div
                         class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(52,211,153,0.6)] transition-all duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for design icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-12 h-12">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -161,7 +490,6 @@
                     <div
                         class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(52,211,153,0.6)] transition-all duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for hosting icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-12 h-12">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -179,7 +507,6 @@
                     <div
                         class="bg-slate-300 p-8 rounded-xl shadow-lg border-2 border-slate-300 hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(52,211,153,0.6)] transition-all duration-300 bg-opacity-40 backdrop-blur-sm">
                         <div class="text-5xl text-emerald-400 mb-4">
-                            <!-- SVG for updates icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-12 h-12">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -201,7 +528,7 @@
                 <div
                     class="bg-slate-300 p-8 md:p-12 rounded-xl shadow-lg max-w-3xl mx-auto bg-opacity-50 backdrop-blur-sm">
                     <p class="text-lg text-center text-slate-300 mb-8">
-                        </strong>Ready to start your project? We'd love to hear from you.</strong>
+                        Ready to start your project? We'd love to hear from you.
                     </p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -218,14 +545,9 @@
                             </div>
                         </div>
 
-                        <!-- Contact Form (Example) -->
+                        <!-- Contact Form -->
                         <div>
-                            <h3 class=" text-2xl font-semibold text-emerald-400 mb-4">Send a Message</h3>
-                            <!-- 
-                                Formspree is a third-party service that handles form submissions for static websites.
-                                The 'action' attribute is set to a Formspree endpoint. You'll need to replace
-                                the part after 'https://formspree.io/f/' with your unique form ID.
-                            -->
+                            <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Send a Message</h3>
                             <form action="https://formspree.io/f/xovnqlpp" method="POST" class="space-y-4">
                                 <div>
                                     <label for="name" class="block text-slate-300 mb-1">Your Name</label>
@@ -264,10 +586,8 @@
                     <a href="https://wa.me/919994736006?text=Hello%20Webzio,%20I'd%20like%20to%20know%20more%20about%20your%20services."
                         target="_blank" rel="noopener noreferrer"
                         class="inline-flex items-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105">
-                        <!-- WhatsApp SVG Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-message-circle">
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
                                 d="M21 11.5a1.5 1.5 0 0 0-1.5-1.5H16a1.5 1.5 0 0 0-1.5 1.5v4.5a1.5 1.5 0 0 0 1.5 1.5h3.5A1.5 1.5 0 0 0 21 16z">
                             </path>
@@ -282,11 +602,234 @@
                     </a>
                 </div>
             </section>
-        </main> <!-- Footer -->
+        </main>
         <footer class="text-center py-6 mt-12 border-t border-slate-700 text-slate-400">
             &copy; Webzio. All rights reserved.<br>&#10084; designed by jaffer sadiq
         </footer>
     </div>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container">
+        <button id="chat-button" aria-label="Open chat">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
+            </svg>
+        </button>
+
+        <div id="chat-window">
+            <div id="chat-header">
+                <div id="chat-header-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                    </svg>
+                </div>
+                <div id="chat-header-text">
+                    <h3>Webzio Assistant</h3>
+                    <p>Online • Typically replies instantly</p>
+                </div>
+                <button id="home-button" aria-label="Reset chat" title="Reset chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        👋 Hi! Welcome to Webzio! I'm here to help you with any questions about our web design, hosting,
+                        and support services. How can I assist you today?
+                    </div>
+                </div>
+                <div class="quick-replies" id="initial-quick-replies">
+                    <button class="quick-reply-btn" data-reply="What services do you offer?">Our Services</button>
+                    <button class="quick-reply-btn" data-reply="What are your prices?">Pricing</button>
+                    <button class="quick-reply-btn" data-reply="How do I get started?">Get Started</button>
+                </div>
+            </div>
+
+            <div id="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+                <button id="send-button" aria-label="Send message">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot JavaScript
+        const chatButton = document.getElementById('chat-button');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const homeButton = document.getElementById('home-button');
+
+        // Toggle chat window
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+            chatButton.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                chatInput.focus();
+            }
+        });
+
+        // Reset chat function
+        function resetChat() {
+            chatMessages.innerHTML = '';
+
+            const welcomeMessage = document.createElement('div');
+            welcomeMessage.className = 'message bot';
+            welcomeMessage.innerHTML = `
+                <div class="message-content">
+                    👋 Hi! Welcome to Webzio! I'm here to help you with any questions about our web design, hosting, and support services. How can I assist you today?
+                </div>
+            `;
+            chatMessages.appendChild(welcomeMessage);
+
+            const quickReplies = document.createElement('div');
+            quickReplies.className = 'quick-replies';
+            quickReplies.id = 'initial-quick-replies';
+            quickReplies.innerHTML = `
+                <button class="quick-reply-btn" data-reply="What services do you offer?">Our Services</button>
+                <button class="quick-reply-btn" data-reply="What are your prices?">Pricing</button>
+                <button class="quick-reply-btn" data-reply="How do I get started?">Get Started</button>
+            `;
+            chatMessages.appendChild(quickReplies);
+
+            chatInput.value = '';
+        }
+
+        // Home button click
+        homeButton.addEventListener('click', () => {
+            resetChat();
+        });
+
+        // Chatbot responses
+        const botResponses = {
+            'services': '🌟 We offer three main services:\n\n1. **Web Designing** - Custom, beautiful websites tailored to your brand\n2. **Web Hosting** - Reliable and secure hosting solutions\n3. **After-Services & Updates** - Ongoing support and maintenance\n\nWhich service interests you most?',
+            'pricing': '💰 Our pricing is flexible and depends on your specific needs. Each project is unique! Contact us for a custom quote:\n\n📧 Email: contact@webzio.xyz\n📱 Phone: 9994736006\n💬 WhatsApp: Available instantly\n\nWe offer competitive rates and great value!',
+            'contact': '📞 You can reach us through:\n\n**Jaffer Sadiq**\n📧 Email: contact@webzio.xyz\n📱 Phone: 9994736006\n📍 Address: 2/12 A, Gandhi Nagar, Kuniamuthur, Coimbatore - 641008\n\nOr click "Chat on WhatsApp" below to connect instantly!',
+            'started': '🚀 Getting started is easy!\n\n1. Tell us about your project\n2. We\'ll discuss your requirements\n3. Get a custom quote\n4. We bring your vision to life!\n\nClick "Get a Quote Today" or contact us directly to begin!',
+            'hosting': '🌐 Our web hosting service includes:\n\n✅ 99.9% uptime guarantee\n✅ Fast and secure servers\n✅ 24/7 technical support\n✅ Easy management dashboard\n✅ Regular backups\n\nYour website will always be fast, stable, and online!',
+            'design': '🎨 Our web design services include:\n\n✅ Custom, responsive designs\n✅ Modern and beautiful UI/UX\n✅ Mobile-friendly layouts\n✅ Fast loading times\n✅ SEO optimization\n\nWe create websites that captivate your audience!',
+            'support': '🛠️ Our support includes:\n\n✅ Regular updates and maintenance\n✅ Security patches\n✅ Content updates\n✅ Technical assistance\n✅ Performance optimization\n\nWe keep your website fresh and performing optimally!',
+            'default': '🤔 That\'s a great question! For detailed information about that, I\'d recommend:\n\n1. Checking our Services section above\n2. Contacting us directly at contact@webzio.xyz\n3. Calling us at 9994736006\n\nOur team will be happy to provide specific details!'
+        };
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.innerHTML = text.replace(/\n/g, '<br>');
+
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+
+            if (message.includes('service') || message.includes('offer') || message.includes('do you do')) {
+                return botResponses.services;
+            } else if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
+                return botResponses.pricing;
+            } else if (message.includes('contact') || message.includes('reach') || message.includes('call')) {
+                return botResponses.contact;
+            } else if (message.includes('start') || message.includes('begin') || message.includes('get started')) {
+                return botResponses.started;
+            } else if (message.includes('host')) {
+                return botResponses.hosting;
+            } else if (message.includes('design') || message.includes('website')) {
+                return botResponses.design;
+            } else if (message.includes('support') || message.includes('update') || message.includes('maintenance')) {
+                return botResponses.support;
+            } else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                return '👋 Hello! How can I help you today?';
+            } else if (message.includes('thank')) {
+                return '😊 You\'re very welcome! It was my pleasure to help you.\n\nIf you have any more questions about our services, feel free to ask anytime. We\'re here to help make your web dreams come true! ✨\n\n📧 Email: contact@webzio.xyz\n📱 Phone: 9994736006';
+            } else {
+                return botResponses.default;
+            }
+        }
+
+        function handleUserMessage(message) {
+            if (!message.trim()) return;
+
+            // Add user message
+            addMessage(message, true);
+            chatInput.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Simulate bot response delay
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getBotResponse(message);
+                addMessage(response);
+            }, 800 + Math.random() * 700);
+        }
+
+        // Send button click
+        sendButton.addEventListener('click', () => {
+            handleUserMessage(chatInput.value);
+        });
+
+        // Enter key to send
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage(chatInput.value);
+            }
+        });
+
+        // Quick reply buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quick-reply-btn')) {
+                const reply = e.target.getAttribute('data-reply');
+                handleUserMessage(reply);
+                const quickReplies = document.getElementById('initial-quick-replies');
+                if (quickReplies) {
+                    quickReplies.remove();
+                }
+            }
+        });
+    </script>
 
 </body>
 
