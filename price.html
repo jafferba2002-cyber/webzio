@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Service Packages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Slate 900 */
+            color: #e2e8f0;
+        }
+
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            background-blend-mode: multiply;
+            z-index: -1;
+        }
+
+        /* Webzio-like Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+        }
+
+        .card-gradient {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(90deg, #34d399 0%, #06b6d4 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(52, 211, 153, 0.5);
+        }
+
+        /* Accordion Animation */
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+        .details-content.open {
+            max-height: 1000px;
+            /* Arbitrary large number */
+            opacity: 1;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .check-icon {
+            color: #4ade80;
+            /* Green 400 */
+            width: 20px;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between">
+    <video autoplay muted loop id="background-video">
+        <source src="webziobacround.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Back Link -->
+    <div class="max-w-7xl mx-auto px-4 pt-6">
+        <a href="index.html"
+            class="inline-flex items-center text-slate-500 hover:text-white text-sm font-medium transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
+
+    <!-- Header Section -->
+    <header class="py-12 text-center px-4">
+        <h1
+            class="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 glow-text">
+            Web Development Plans
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+            Choose the perfect package for your digital presence. Transparent pricing, no hidden fees.
+        </p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Package 1: Basic -->
+            <div
+                class="card-gradient rounded-2xl p-6 flex flex-col relative overflow-hidden group hover:border-blue-500 transition-colors duration-300">
+                <div
+                    class="absolute top-0 right-0 bg-blue-500/10 text-blue-400 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    STARTER
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">Basic Portfolio</h2>
+                <p class="text-slate-400 text-sm mb-6 h-10">Best for: Personal profiles, Resumes, Landing pages.</p>
+
+                <!-- The Price Button (Trigger) -->
+                <button onclick="toggleDetails('pkg1')"
+                    class="btn-gradient w-full py-4 rounded-xl text-white font-bold text-xl flex justify-between items-center px-6 group cursor-pointer">
+                    <span>View Price</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-lg">₹650</span>
+                </button>
+                <p class="text-center text-sm text-emerald-400 mt-2">+ Domain Cost</p>
+
+                <!-- Hidden Details -->
+                <div id="pkg1" class="details-content mt-4">
+                    <div class="border-t border-slate-700 pt-4 space-y-3">
+                        <h3 class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Inclusions</h3>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Up to 5
+                                Pages (Home, About, Services, etc.)</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Animated
+                                Backgrounds</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Free
+                                Subdomain Setup</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Fast loading
+                                static pages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 2: Dynamic -->
+            <div
+                class="card-gradient rounded-2xl p-6 flex flex-col relative overflow-hidden group hover:border-purple-500 transition-colors duration-300 transform md:-translate-y-4 shadow-2xl shadow-purple-900/20">
+                <div class="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    POPULAR
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">Dynamic Business</h2>
+                <p class="text-slate-400 text-sm mb-6 h-10">Best for: Small businesses, Consultancies requiring
+                    interaction.</p>
+
+                <!-- The Price Button (Trigger) -->
+                <button onclick="toggleDetails('pkg2')"
+                    class="btn-gradient w-full py-4 rounded-xl text-white font-bold text-xl flex justify-between items-center px-6 group cursor-pointer shadow-lg shadow-purple-500/30">
+                    <span>View Price</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-lg">₹1,250</span>
+                </button>
+                <p class="text-center text-sm text-emerald-400 mt-2">+ Domain Cost</p>
+
+                <!-- Hidden Details -->
+                <div id="pkg2" class="details-content mt-4">
+                    <div class="border-t border-slate-700 pt-4 space-y-3">
+                        <div
+                            class="bg-purple-500/10 p-2 rounded text-xs text-purple-300 mb-2 border border-purple-500/20">
+                            Includes all Static Website features
+                        </div>
+                        <h3 class="text-purple-400 font-semibold text-sm uppercase tracking-wider">Interactivity</h3>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Multi-page
+                                (5 Pages)</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Chatbot
+                                integration</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i>
+                                Click-to-Call & WhatsApp</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Social Media
+                                Integration</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Functional
+                                Contact Form</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 3: E-Commerce -->
+            <div
+                class="card-gradient rounded-2xl p-6 flex flex-col relative overflow-hidden group hover:border-pink-500 transition-colors duration-300">
+                <div
+                    class="absolute top-0 right-0 bg-pink-500/10 text-pink-400 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    STORE
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">E-Commerce</h2>
+                <p class="text-slate-400 text-sm mb-6 h-10">Best for: Shops & Retailers selling physical/digital goods.
+                </p>
+
+                <!-- The Price Button (Trigger) -->
+                <button onclick="toggleDetails('pkg3')"
+                    class="btn-gradient w-full py-4 rounded-xl text-white font-bold text-xl flex justify-between items-center px-6 group cursor-pointer">
+                    <span>View Price</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-lg">₹2,500</span>
+                </button>
+                <p class="text-center text-sm text-emerald-400 mt-2">+ Domain Cost</p>
+
+                <!-- Hidden Details -->
+                <div id="pkg3" class="details-content mt-4">
+                    <div class="border-t border-slate-700 pt-4 space-y-3">
+                        <div class="bg-pink-500/10 p-2 rounded text-xs text-pink-300 mb-2 border border-pink-500/20">
+                            Includes all Dynamic Website features
+                        </div>
+                        <h3 class="text-pink-400 font-semibold text-sm uppercase tracking-wider">Store Features</h3>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> 150 Products
+                                & 15 Categories</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Razorpay
+                                Payment Gateway</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Cash on
+                                Delivery (COD)</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> User Signup
+                                & Guest Login</li>
+                            <li class="flex items-start gap-3"><i class="fas fa-check check-icon mt-1"></i> Floating
+                                Cart & Order Admin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function toggleDetails(id) {
+            const content = document.getElementById(id);
+            const allContents = document.querySelectorAll('.details-content');
+
+            // Optional: Close others when one opens (Accordion style)
+            // Uncomment the lines below if you want only one open at a time
+            /*
+            allContents.forEach(item => {
+                if (item.id !== id) {
+                    item.classList.remove('open');
+                }
+            });
+            */
+
+            // Toggle current
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+            } else {
+                content.classList.add('open');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -82,6 +82,35 @@
             font-family: 'Inter', sans-serif;
         }
 
+        #terms-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(52, 211, 153, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #terms-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(52, 211, 153, 0.6);
+        }
+
+        #terms-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
         #chat-button {
             width: 60px;
             height: 60px;
@@ -432,6 +461,7 @@
                     <li><a href="#home" class="text-white hover:text-emerald-400 transition-colors">Home</a></li>
                     <li><a href="#services" class="text-white hover:text-emerald-400 transition-colors">Services</a>
                     </li>
+                    <li><a href="price.html" class="text-white hover:text-emerald-400 transition-colors">Price</a></li>
                     <li><a href="#contact" class="text-white hover:text-emerald-400 transition-colors">Contact</a></li>
                 </ul>
             </nav>
@@ -599,6 +629,16 @@
         </footer>
     </div>
 
+    <!-- Terms and Conditions Button -->
+    <a href="terms.html" id="terms-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
+        Terms & Conditions
+    </a>
+
     <!-- Chatbot Container -->
     <div id="chatbot-container">
         <button id="chat-button" aria-label="Open chat">
@@ -709,7 +749,7 @@
         // Chatbot responses
         const botResponses = {
             'services': '🌟 We offer three main services:\n\n1. **Web Designing** - Custom, beautiful websites tailored to your brand\n2. **Web Hosting** - Reliable and secure hosting solutions\n3. **After-Services & Updates** - Ongoing support and maintenance\n\nWhich service interests you most?',
-            'pricing': '💰 Our pricing is flexible and depends on your specific needs. Each project is unique! Contact us for a custom quote:\n\n📧 Email: contact@webzio.xyz\n📱 Phone: 9994736006\n💬 WhatsApp: Available instantly\n\nWe offer competitive rates and great value!',
+            'pricing': '💰 **Our Web Development Plans:**\n\n1️⃣ **Basic Portfolio - ₹650** (+ Domain)\n   • Up to 5 Pages\n   • Animated Backgrounds\n   • Free Subdomain Setup\n\n2️⃣ **Dynamic Business - ₹1,250** (+ Domain)\n   • Chatbot Integration\n   • Social Media & Contact Forms\n   • Click-to-Call & WhatsApp\n\n3️⃣ **E-Commerce - ₹2,500** (+ Domain)\n   • Online Store (150 Products)\n   • Payment Gateway & COD\n   • User Login & Order Admin\n\nContact us for a custom quote! 🚀',
             'contact': '📞 You can reach us through:\n\n**Jaffer Sadiq**\n📧 Email: contact@webzio.xyz\n📱 Phone: 9994736006\n📍 Address: 2/12 A, Gandhi Nagar, Kuniamuthur, Coimbatore - 641008\n\nOr click "Chat on WhatsApp" below to connect instantly!',
             'started': '🚀 Getting started is easy!\n\n1. Tell us about your project\n2. We\'ll discuss your requirements\n3. Get a custom quote\n4. We bring your vision to life!\n\nClick "Get a Quote Today" or contact us directly to begin!',
             'hosting': '🌐 Our web hosting service includes:\n\n✅ 99.9% uptime guarantee\n✅ Fast and secure servers\n✅ 24/7 technical support\n✅ Easy management dashboard\n✅ Regular backups\n\nYour website will always be fast, stable, and online!',
@@ -821,7 +861,6 @@
             }
         });
     </script>
-
 </body>
 
 </html>

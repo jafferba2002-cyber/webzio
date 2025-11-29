@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - Webzio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #030712;
+            /* Very dark slate/black */
+        }
+
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="text-slate-300 antialiased min-h-screen py-10 px-4 selection:bg-indigo-500 selection:text-white">
+
+    <video autoplay muted loop id="background-video">
+        <source src="webziobacround.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar / Back Link -->
+    <div class="max-w-5xl mx-auto mb-8">
+        <a href="index.html"
+            class="inline-flex items-center text-slate-500 hover:text-white text-sm font-medium transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
+    <div class="glass-panel max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/20">
+
+        <!-- Header -->
+        <div class="relative p-8 md:p-16 border-b border-white/5">
+            <div class="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
+                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="99.5" stroke="url(#paint0_linear)" stroke-opacity="0.5" />
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="100" y1="0" x2="100" y2="200"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#6366F1" />
+                            <stop offset="1" stop-color="#A855F7" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <p class="text-indigo-400 font-bold tracking-widest text-xs uppercase mb-4">Official Agreement</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">Terms <span
+                    class="text-slate-600">&</span> <br /><span class="gradient-text">Conditions</span></h1>
+            <p class="text-slate-400 max-w-2xl text-lg font-light leading-relaxed">
+                By engaging with Webzio for your digital product development, you agree to the frameworks and policies
+                outlined below.
+            </p>
+
+            <div class="mt-8 flex items-center gap-4 text-xs font-mono text-slate-500">
+                <span class="px-2 py-1 rounded bg-white/5 border border-white/10">V.2025.1</span>
+                <span>EFFECTIVE: <span id="current-date" class="text-slate-300"></span></span>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-8 md:p-16 space-y-16">
+
+            <!-- SECTION 1 -->
+            <section>
+                <div class="flex items-start gap-4 mb-8">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500/10 text-indigo-400 font-mono text-sm border border-indigo-500/20">01</span>
+                    <h2 class="text-2xl font-bold text-white mt-0.5">Domain Names & Assets</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/30 transition-colors">
+                        <h3 class="text-white font-semibold mb-3">Procurement</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Domains are <span class="text-white">not
+                                included</span> in development costs. They are billed as additional expenses at market
+                            rates.</p>
+                    </div>
+                    <div
+                        class="bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/30 transition-colors">
+                        <h3 class="text-white font-semibold mb-3">Ownership</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Clients retain 100% ownership rights of any
+                            domain purchased on their behalf upon full payment clearance.</p>
+                    </div>
+                    <div
+                        class="bg-white/5 p-6 rounded-2xl border border-white/5 hover:border-indigo-500/30 transition-colors">
+                        <h3 class="text-white font-semibold mb-3">Hosting</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Renewals are annual. Static site packages
+                            include a free subdomain (e.g. project.netlify.app).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <section>
+                <div class="flex items-start gap-4 mb-8">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-sm border border-emerald-500/20">02</span>
+                    <h2 class="text-2xl font-bold text-white mt-0.5">Financial Structure</h2>
+                </div>
+
+                <div
+                    class="rounded-2xl bg-gradient-to-br from-emerald-900/20 to-transparent border border-emerald-500/10 p-1">
+                    <div class="bg-[#0b101b] rounded-xl p-8">
+                        <div class="grid md:grid-cols-2 gap-10">
+                            <div>
+                                <h3 class="text-emerald-400 font-bold text-sm tracking-wider uppercase mb-4">Payment
+                                    Schedule</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex gap-4">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2"></div>
+                                        <p class="text-sm"><strong class="text-white block mb-1">Deposit
+                                                Required</strong> 50% non-refundable advance to commence work.</p>
+                                    </li>
+                                    <li class="flex gap-4">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2"></div>
+                                        <p class="text-sm"><strong class="text-white block mb-1">Final Balance</strong>
+                                            Due upon completion, prior to live deployment or file handover.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-10">
+                                <h3 class="text-emerald-400 font-bold text-sm tracking-wider uppercase mb-4">Pricing
+                                    Rules</h3>
+                                <p class="text-sm mb-4">Estimates are fixed based on the initial proposal scope.
+                                    Additional features are billed separately.</p>
+                                <div
+                                    class="text-xs bg-emerald-500/10 text-emerald-300 p-3 rounded border border-emerald-500/20">
+                                    ⚠️ Late payments may incur a 5% weekly fee.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <section>
+                <div class="flex items-start gap-4 mb-8">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-500/10 text-fuchsia-400 font-mono text-sm border border-fuchsia-500/20">03</span>
+                    <h2 class="text-2xl font-bold text-white mt-0.5">Development & Revisions</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="border border-white/10 rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-fuchsia-500/5 group-hover:bg-fuchsia-500/10 transition-colors">
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 relative z-10">Revisions</h3>
+                        <p class="text-sm text-slate-400 relative z-10">
+                            Includes <strong>2 rounds</strong> of feedback. Changes after layout approval or mock-up
+                            finalization are billed hourly.
+                        </p>
+                    </div>
+
+                    <div class="border border-white/10 rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-fuchsia-500/5 group-hover:bg-fuchsia-500/10 transition-colors">
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 relative z-10">Timelines</h3>
+                        <p class="text-sm text-slate-400 relative z-10">
+                            Deadlines shift if content is delayed. "Ghosting" for >14 days pauses the project and may
+                            incur restart fees.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4 -->
+            <section>
+                <div class="flex items-start gap-4 mb-8">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 text-amber-400 font-mono text-sm border border-amber-500/20">04</span>
+                    <h2 class="text-2xl font-bold text-white mt-0.5">Legal & Liability</h2>
+                </div>
+
+                <div class="overflow-hidden rounded-2xl border border-white/10">
+                    <table class="w-full text-left text-sm text-slate-400">
+                        <tbody class="divide-y divide-white/5">
+                            <tr class="group hover:bg-white/[0.02]">
+                                <th class="px-6 py-5 font-medium text-white w-1/3">Copyright</th>
+                                <td class="px-6 py-5">Client guarantees ownership of all provided assets. Developer is
+                                    not liable for infringement.</td>
+                            </tr>
+                            <tr class="group hover:bg-white/[0.02]">
+                                <th class="px-6 py-5 font-medium text-white">Footer Credit</th>
+                                <td class="px-6 py-5">Developer retains the right to a discreet "Designed by Webzio"
+                                    link in the footer.</td>
+                            </tr>
+                            <tr class="group hover:bg-white/[0.02]">
+                                <th class="px-6 py-5 font-medium text-white">Support</th>
+                                <td class="px-6 py-5">15-day post-launch bug fix window included. New features excluded.
+                                </td>
+                            </tr>
+                            <tr class="group hover:bg-white/[0.02]">
+                                <th class="px-6 py-5 font-medium text-white">Maintenance</th>
+                                <td class="px-6 py-5">Ongoing security and updates require a separate AMC agreement.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 5: Cancellation -->
+            <section class="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <h3 class="text-lg font-bold text-red-100">Cancellation Policy</h3>
+                </div>
+                <div class="text-sm text-red-200/80 space-y-2">
+                    <p>Deposits are non-refundable once work begins. Rejection of final work without valid technical
+                        cause does not void the obligation to pay the full balance.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-[#050a14] p-8 md:p-12 border-t border-white/5">
+            <div class="flex flex-col items-center justify-center text-center">
+                <img src="webzio logo.png" alt="Webzio Logo" class="h-12 mb-4 mx-auto">
+                <p class="text-slate-500 text-sm mb-8">Building the Digital Future</p>
+
+                <p class="text-xs text-slate-600 max-w-md mx-auto">
+                    By proceeding with the initial deposit payment, the Client acknowledges that they have read,
+                    understood, and agreed to these terms.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    </script>
+</body>
+
+</html>
