@@ -575,6 +575,8 @@
                                 <div>
                                     <label for="email" class="block text-slate-300 mb-1">Your Email</label>
                                     <input type="email" id="email" name="email"
+                                        pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|zohomail\.in|hotmail\.in|hotmail\.co\.in|jaffersadiq\.com)"
+                                        title="Only emails from @gmail.com, @outlook.com, @hotmail.com, @zohomail.in, @hotmail.in, @hotmail.co.in, or @jaffersadiq.com are allowed"
                                         class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
@@ -860,6 +862,59 @@
                 }
             }
         });
+
+        // Email validation for form
+        const allowedDomains = [
+            'gmail.com',
+            'outlook.com',
+            'hotmail.com',
+            'zohomail.in',
+            'hotmail.in',
+            'hotmail.co.in',
+            'jaffersadiq.com'
+        ];
+
+        const emailInput = document.getElementById('email');
+        if (emailInput) {
+            emailInput.addEventListener('blur', function() {
+                validateEmail(this.value);
+            });
+        }
+
+        function validateEmail(email) {
+            if (!email) return true;
+            
+            const domain = email.split('@')[1];
+            if (!domain || !allowedDomains.includes(domain)) {
+                emailInput.style.borderColor = '#ef4444';
+                const errorMsg = document.createElement('div');
+                errorMsg.id = 'email-error';
+                errorMsg.className = 'text-red-400 text-sm mt-1';
+                errorMsg.textContent = 'Enter valid mail id';
+                
+                const existing = document.getElementById('email-error');
+                if (existing) existing.remove();
+                emailInput.parentElement.appendChild(errorMsg);
+                return false;
+            } else {
+                emailInput.style.borderColor = '';
+                const existing = document.getElementById('email-error');
+                if (existing) existing.remove();
+                return true;
+            }
+        }
+
+        // Form submission validation
+        const form = document.querySelector('form[action="https://formspree.io/f/xovnqlpp"]');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const email = emailInput.value;
+                if (!validateEmail(email)) {
+                    e.preventDefault();
+                    alert('Enter valid mail id');
+                }
+            });
+        }
     </script>
 </body>
 
