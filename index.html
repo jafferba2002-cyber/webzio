@@ -22,6 +22,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-TGKKNCJR');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://formspree.io; frame-src https://www.googletagmanager.com; form-action https://formspree.io; base-uri 'self'; object-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webzio - Web Design & Hosting</title>
     <!-- Inter Font -->
@@ -567,28 +569,32 @@
                         <div>
                             <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Send a Message</h3>
                             <form action="https://formspree.io/f/xovnqlpp" method="POST" class="space-y-4">
+                                <!-- Honeypot: hidden from humans, bots fill it in -->
+                                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
+                                    style="position:absolute;left:-9999px;height:0;width:0;opacity:0" aria-hidden="true">
                                 <div>
                                     <label for="name" class="block text-slate-300 mb-1">Your Name</label>
-                                    <input type="text" id="name" name="name"
+                                    <input type="text" id="name" name="name" maxlength="80"
                                         class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-slate-300 mb-1">Your Email</label>
-                                    <input type="email" id="email" name="email" required
+                                    <input type="email" id="email" name="email" required maxlength="100"
                                         pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|zohomail\.in|hotmail\.in|hotmail\.co\.in|jaffersadiq\.com)"
                                         title="Only emails from @gmail.com, @outlook.com, @hotmail.com, @zohomail.in, @hotmail.in, @hotmail.co.in, or @jaffersadiq.com are allowed"
                                         class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-slate-300 mb-1">Mobile Number</label>
-                                    <input type="tel" id="phone" name="phone"
+                                    <input type="tel" id="phone" name="phone" maxlength="15" pattern="[0-9+\- ]{7,15}" title="Enter a valid phone number"
                                         class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors">
                                 </div>
                                 <div>
                                     <label for="message" class="block text-slate-300 mb-1">Your Message</label>
-                                    <textarea id="message" name="message" rows="4"
+                                    <textarea id="message" name="message" rows="4" maxlength="2000"
                                         class="w-full p-3 rounded-md bg-slate-700 border border-slate-600 focus:outline-none focus:border-emerald-400 transition-colors"></textarea>
                                 </div>
+                                <!-- CAPTCHA widget goes here (Turnstile / hCaptcha / reCAPTCHA) -->
                                 <button type="submit"
                                     class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-md shadow-lg transform transition-transform duration-300 hover:scale-105">
                                     Send Message
